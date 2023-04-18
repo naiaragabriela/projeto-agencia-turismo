@@ -10,7 +10,7 @@ namespace AgenciaTurismo.Controllers
 {
     public class ClientController
     {
-        public bool Insert(Client client)
+        public int Insert(Client client)
         {
             return new ClientService().InsertClient(client);
         }

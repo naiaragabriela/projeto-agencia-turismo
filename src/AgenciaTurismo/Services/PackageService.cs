@@ -10,7 +10,7 @@ namespace AgenciaTurismo.Services
 {
     public class PackageService
     {
-        readonly string strConn = @"Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=C:\Users\adm\source\repos\AgenciaTurismo\banco\TourismAgency.mdf";
+        readonly string strConn = @"Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=C:\Users\adm\source\repos\projeto-agencia-turismo\src\banco\TourismAgency.mdf";
         readonly SqlConnection conn;
 
         public PackageService()

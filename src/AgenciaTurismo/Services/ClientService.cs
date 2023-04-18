@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AgenciaTurismo.Controllers;
 using AgenciaTurismo.Models;
 
 namespace AgenciaTurismo.Services
@@ -11,7 +12,7 @@ namespace AgenciaTurismo.Services
     public class ClientService
     {
 
-        readonly string strConn = @"Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=C:\Users\adm\source\repos\AgenciaTurismo\banco\TourismAgency.mdf";
+        readonly string strConn = @"Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=C:\Users\adm\source\repos\projeto-agencia-turismo\src\banco\TourismAgency.mdf";
         readonly SqlConnection conn;
 
         public ClientService()
@@ -19,29 +20,26 @@ namespace AgenciaTurismo.Services
             conn = new SqlConnection(strConn);
             conn.Open();
         }
-        public bool InsertClient(Client client)
+        public int InsertClient(Client client)
         {
-            bool status = false;
+            int status = 0;
             try
             {
-                string strInsert = "insert into Client (Name, Phone, DtRegistration) " +
-                    "values (@Name, @Phone, @DtRegistration)";
-
-
+                string strInsert = "insert into Client (Name, Phone, DtRegistration, IdAddress) " +
+                    "values (@Name, @Phone, @DtRegistration,@IdAddress); select cast(scope_identity() as int)";
 
                 SqlCommand commandInsert = new SqlCommand(strInsert, conn);
 
                 commandInsert.Parameters.Add(new SqlParameter("@Name", client.Name));
                 commandInsert.Parameters.Add(new SqlParameter("@Phone", client.Phone));
                 commandInsert.Parameters.Add(new SqlParameter("@DtRegistration", client.DtRegistration));
-                commandInsert.Parameters.Add(new SqlParameter("@IdAddress", InsertAddress(client)));
-
-                commandInsert.ExecuteNonQuery();
-                status = true;
+                commandInsert.Parameters.Add(new SqlParameter("@IdAddress", new AddressController().Insert(client.Address)));
+               
+                status = (int)commandInsert.ExecuteScalar(); 
             }
             catch (Exception)
             {
-                status = false;
+                status = 0;
                 throw;
             }
             finally
@@ -51,25 +49,6 @@ namespace AgenciaTurismo.Services
 
             return status;
         }
-
-        private int InsertAddress(Client client)
-        {
-
-            string strInsert = "insert into Address(Street, Number, Neighborhood, PostalCode, Description, DtRegistration, City) " +
-                    "values (@Street, @Number, @Neighborhood, @PostalCode, @Description, @DtRegistration, @City); " +
-                    "select cast(scope_identity() as int)";
-
-            SqlCommand commandInsert = new SqlCommand(strInsert, conn);
-
-            commandInsert.Parameters.Add(new SqlParameter("@Street", client.Address.Street));
-            commandInsert.Parameters.Add(new SqlParameter("@Number", client.Address.Number));
-            commandInsert.Parameters.Add(new SqlParameter("@Neighborhood", client.Address.Neighborhood));
-            commandInsert.Parameters.Add(new SqlParameter("@PostalCode", client.Address.PostalCode));
-            commandInsert.Parameters.Add(new SqlParameter("@Description", client.Address.Description));
-
-            return (int)commandInsert.ExecuteScalar();
-        }
-
 
         public List<Client> FindAll()
         {
@@ -104,6 +83,8 @@ namespace AgenciaTurismo.Services
             }
             return clientList;
         }
+
+        //falta fazer o update de cliente
 
         public int DeleteId(int id)
         {

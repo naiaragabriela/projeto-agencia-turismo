@@ -10,7 +10,7 @@ namespace AgenciaTurismo.Controllers
 {
     public class CityController
     {
-        public bool Insert(City city)
+        public int Insert(City city)
         {
             return new CityService().InsertCity(city);
         }
@@ -18,6 +18,11 @@ namespace AgenciaTurismo.Controllers
         public List<City> FindAll()
         {
             return new CityService().FindAll();
+        }
+
+        public int Update(string description, int id)
+        {
+            return new CityService().Update(description, id);
         }
 
         public int Delete(int id)

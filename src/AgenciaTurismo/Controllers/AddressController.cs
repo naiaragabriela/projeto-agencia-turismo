@@ -10,7 +10,7 @@ namespace AgenciaTurismo.Controllers
 {
     public class AddressController
     {
-        public bool Insert(Address address)
+        public int Insert(Address address)
         {
             return new AddressService().InsertAddress(address);
         }
@@ -19,7 +19,10 @@ namespace AgenciaTurismo.Controllers
         {
             return new AddressService().FindAll();
         }
-
+        public int Update(int id)
+        {
+            return new AddressService().Update(id);
+        }
         public int Delete(int id)
         {
             return new AddressService().DeleteId(id);

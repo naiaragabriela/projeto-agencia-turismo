@@ -10,7 +10,7 @@ namespace AgenciaTurismo.Services
 {
     public class CityService
     {
-        readonly string strConn = @"Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=C:\Users\adm\source\repos\AgenciaTurismo\banco\TourismAgency.mdf";
+        readonly string strConn = @"Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=C:\Users\adm\source\repos\projeto-agencia-turismo\src\banco\TourismAgency.mdf";
         readonly SqlConnection conn;
 
         public CityService()
@@ -18,32 +18,32 @@ namespace AgenciaTurismo.Services
             conn = new SqlConnection(strConn);
             conn.Open();
         }
-        public bool InsertCity(City city)
+        public int InsertCity(City city)
         {
-            bool status = false;
+            int status = 0;
             try
             {
                 string strInsert = "insert into City (Description, DtRegistration) " +
-                    "values (@Description, @DtRegistration)";
+                    "values (@Description, @DtRegistration); select cast(scope_identity() as int)";
 
                 SqlCommand commandInsert = new SqlCommand(strInsert, conn);
 
                 commandInsert.Parameters.Add(new SqlParameter("@Description", city.Description));
-                commandInsert.Parameters.Add(new SqlParameter("@DtResgistration", city.DtRegistration));
+                commandInsert.Parameters.Add(new SqlParameter("@DtRegistration", city.DtRegistration));
 
-                commandInsert.ExecuteNonQuery();
-                status = true;
+                 
+                status = (int)commandInsert.ExecuteScalar();
 
-            }catch (Exception) 
+            }
+            catch (Exception) 
             {
-                status = false;
+                status = 0;
                 throw;
             }
             finally
             {
                 conn.Close();
             }
-
             return status;
         }
 
@@ -76,9 +76,20 @@ namespace AgenciaTurismo.Services
             return cityList;
         }
 
+        public int Update(string description, int id)
+        {
+            string _update = "update City set Description = @Description where Id = @id";
+            SqlCommand commandUpdate = new SqlCommand(_update, conn);
+            commandUpdate.Parameters.Add(new SqlParameter("@Description", description));
+            commandUpdate.Parameters.Add(new SqlParameter("@Id", id));
+
+            return commandUpdate.ExecuteNonQuery();
+        }
+
+
         public int DeleteId(int id)
         {
-            string _delete = "delete from City where id =@id";
+            string _delete = "delete from City where Id =@id";
             SqlCommand commandDelete = new SqlCommand(_delete,conn);
             commandDelete.Parameters.Add(new SqlParameter("@id", id));
 
