@@ -86,7 +86,7 @@ namespace AgenciaTurismo.Services
                 address.Neighborhood = (string)dr["Neighborhood"];
                 address.Description = (string)dr["Description"];
                 address.DtRegistration = (DateTime)dr["DtRegsitration"];
-                address.City = new City() { Description = (string)dr["City"] };
+                address.City = new City() {Description = (string)dr["City"] };
 
                 addressList.Add(address);
             }
@@ -94,6 +94,7 @@ namespace AgenciaTurismo.Services
         }
 
 
+        //ver se está correto o UPDATE 
         public Address FindId (int id)
         { 
             StringBuilder sb = new StringBuilder();
@@ -127,6 +128,7 @@ namespace AgenciaTurismo.Services
             return findId;
 
         }
+
 
         public int Update(int id)
         {
