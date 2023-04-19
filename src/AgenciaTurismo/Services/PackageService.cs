@@ -27,7 +27,7 @@ namespace AgenciaTurismo.Services
             int status = 0;
             try
             {
-                string strInsert = "insert into Package ( IdHotel, IdTicket, DtRegistration, Cost, IdClient)" +
+                string strInsert = "insert into Package (IdHotel, IdTicket, DtRegistration, Cost, IdClient)" +
                     "values (@IdHotel, @IdTicket, @DtRegistration, @Cost, @IdClient)";
 
                 SqlCommand commandInsert = new SqlCommand(strInsert, conn);
