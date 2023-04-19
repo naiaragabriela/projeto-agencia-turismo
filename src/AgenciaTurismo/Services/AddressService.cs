@@ -98,7 +98,7 @@ namespace AgenciaTurismo.Services
         public int Update(Address address)
 
         {
-            string _update = "update City set " +
+            string _update = "update Address set " +
                  "Street = @Street" +
                  "Number = @Number" +
                  "Neighborhood = @Neighborhood" +

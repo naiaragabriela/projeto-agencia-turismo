@@ -20,9 +20,14 @@ namespace AgenciaTurismo.Controllers
             return new ClientService().FindAll();
         }
 
-        public int Delete(int id)
+
+        public int Update(Client client)
         {
-            return new ClientService().DeleteId(id);
+            return new ClientService().Update(client);
+        }
+        public int Delete(Client client)
+        {
+            return new ClientService().Delete(client);
         }
     }
 }

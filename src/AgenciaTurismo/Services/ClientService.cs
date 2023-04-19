@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AgenciaTurismo.Controllers;
 using AgenciaTurismo.Models;
+using Microsoft.VisualBasic;
 
 namespace AgenciaTurismo.Services
 {
@@ -85,13 +87,28 @@ namespace AgenciaTurismo.Services
             return clientList;
         }
 
-        //falta fazer o update de cliente
 
-        public int DeleteId(int id)
+        public int Update(Client client)
+        {
+            string _update = "update Client set " +
+                             "Name = @Name" +
+                             "Phone = @Phone" +
+                             "Address = @IdAdress" +
+                             " where Id = @id";
+            SqlCommand commandUpdate = new SqlCommand(_update, conn);
+            commandUpdate.Parameters.Add(new SqlParameter("@Name", client.Name));
+            commandUpdate.Parameters.Add(new SqlParameter("@Phone", client.Phone));
+            commandUpdate.Parameters.Add(new SqlParameter("@IdAdress", client.Address));
+
+            return commandUpdate.ExecuteNonQuery();
+
+        }
+
+        public int Delete(Client client)
         {
             string _delete = "delete from Client where id =@id";
             SqlCommand commandDelete = new SqlCommand(_delete, conn);
-            commandDelete.Parameters.Add(new SqlParameter("@id", id));
+            commandDelete.Parameters.Add(new SqlParameter("@id", client.Id));
 
             return (int)commandDelete.ExecuteNonQuery();
         }
