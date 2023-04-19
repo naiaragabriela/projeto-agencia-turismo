@@ -126,7 +126,7 @@ namespace AgenciaTurismo.Services
 
         public int Delete(Ticket ticket)
         {
-            string _delete = "delete from Client where id =@id";
+            string _delete = "delete from Ticket where id =@id";
             SqlCommand commandDelete = new SqlCommand(_delete, conn);
             commandDelete.Parameters.Add(new SqlParameter("@id", ticket.Id));
 
