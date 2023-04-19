@@ -19,13 +19,13 @@ namespace AgenciaTurismo.Controllers
         {
             return new AddressService().FindAll();
         }
-        public int Update(int id)
+        public int Update(Address address)
         {
-            return new AddressService().Update(id);
+            return new AddressService().Update(address);
         }
-        public int Delete(int id)
+        public int Delete(Address address)
         {
-            return new AddressService().DeleteId(id);
+            return new AddressService().Delete(address);
         }
     }
 }
