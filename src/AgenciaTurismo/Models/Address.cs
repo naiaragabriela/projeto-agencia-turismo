@@ -19,7 +19,6 @@ namespace AgenciaTurismo.Models
         public City City { get; set; }
         public DateTime DtRegistration { get; set; }
         #endregion
-
         public override string ToString()
         {
             return "Logradouro: "+ Street +

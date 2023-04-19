@@ -25,22 +25,38 @@ internal class Program
             City = city
         };
 
-    Client client = new Client()
-    {
-        Name = "Gustavo",
-        Phone = "7070-7070",
-        DtRegistration = DateTime.Now,
-        Address = address
+        Client client = new Client()
+        {
+            Name = "Gustavo",
+            Phone = "7070-7070",
+            DtRegistration = DateTime.Now,
+            Address = address
         };
 
-
-        /*
+        /*CRUD City
+         * 
          * INSERT CITY
          if (new CityController().Insert(city)>0)
             Console.WriteLine("Sucesso! Registro Inserido!");
         else
             Console.WriteLine("Erro ao inserir registro");
- */
+        */
+
+        /* update City
+        new CityController().Update("São carlos", 35);
+        *
+        *
+        //SELECT CITY 
+        //new CityController().FindAll().ForEach(Console.WriteLine);
+
+        //DELETE CITY
+        //new CityController().Delete(1);
+
+
+
+
+
+
 
         /*INSERT ADDRESS
          * if (new AddressController().Insert(address)>0)
@@ -49,27 +65,15 @@ internal class Program
             Console.WriteLine("Erro ao inserir registro");
         */
 
+
+
+
         /*INSERT CLIENT
          * if (new ClientController().Insert(client) > 0)
             Console.WriteLine("Sucesso! Registro Inserido!");
         else
             Console.WriteLine("Erro ao inserir registro");
         */
-
-        //update City
-        new CityController().Update("São carlos", 35);
-
-
-
-        //SELECT CITY 
-        //new CityController().FindAll().ForEach(Console.WriteLine);
-
-
-        //DELETE CITY
-        //new CityController().Delete(1);
-
-
-
 
 
     }

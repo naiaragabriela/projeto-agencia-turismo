@@ -12,7 +12,7 @@ namespace AgenciaTurismo.Controllers
     {
         public int Insert(City city)
         {
-            return new CityService().InsertCity(city);
+            return new CityService().Insert(city);
         }
 
         public List<City> FindAll()
@@ -20,14 +20,14 @@ namespace AgenciaTurismo.Controllers
             return new CityService().FindAll();
         }
 
-        public int Update(string description, int id)
+        public int Update(City city)
         {
-            return new CityService().Update(description, id);
+            return new CityService().UpdateDescription(city);
         }
 
-        public int Delete(int id)
+        public int Delete(City city)
         {
-            return new CityService().DeleteId(id);
+            return new CityService().DeleteId(city);
         }
     }
 }

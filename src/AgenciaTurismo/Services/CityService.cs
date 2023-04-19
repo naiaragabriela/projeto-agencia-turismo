@@ -18,7 +18,7 @@ namespace AgenciaTurismo.Services
             conn = new SqlConnection(strConn);
             conn.Open();
         }
-        public int InsertCity(City city)
+        public int Insert(City city)
         {
             int status = 0;
             try
@@ -76,22 +76,22 @@ namespace AgenciaTurismo.Services
             return cityList;
         }
 
-        public int Update(string description, int id)
+        public int UpdateDescription(City city)
         {
             string _update = "update City set Description = @Description where Id = @id";
             SqlCommand commandUpdate = new SqlCommand(_update, conn);
-            commandUpdate.Parameters.Add(new SqlParameter("@Description", description));
-            commandUpdate.Parameters.Add(new SqlParameter("@Id", id));
+            commandUpdate.Parameters.Add(new SqlParameter("@Description", city.Description));
+            commandUpdate.Parameters.Add(new SqlParameter("@Id", city.Id));
 
             return commandUpdate.ExecuteNonQuery();
         }
 
 
-        public int DeleteId(int id)
+        public int DeleteId(City city)
         {
             string _delete = "delete from City where Id =@id";
             SqlCommand commandDelete = new SqlCommand(_delete,conn);
-            commandDelete.Parameters.Add(new SqlParameter("@id", id));
+            commandDelete.Parameters.Add(new SqlParameter("@id", city.Id));
 
             return (int)commandDelete.ExecuteNonQuery();
         }

@@ -34,8 +34,8 @@ namespace AgenciaTurismo.Services
                 commandInsert.Parameters.Add(new SqlParameter("@Phone", client.Phone));
                 commandInsert.Parameters.Add(new SqlParameter("@DtRegistration", client.DtRegistration));
                 commandInsert.Parameters.Add(new SqlParameter("@IdAddress", new AddressController().Insert(client.Address)));
-               
-                status = (int)commandInsert.ExecuteScalar(); 
+
+                status = (int)commandInsert.ExecuteScalar();
             }
             catch (Exception)
             {
@@ -46,10 +46,8 @@ namespace AgenciaTurismo.Services
             {
                 conn.Close();
             }
-
             return status;
         }
-
         public List<Client> FindAll()
         {
             List<Client> clientList = new List<Client>();
@@ -74,11 +72,14 @@ namespace AgenciaTurismo.Services
                 client.Name = (string)dr["Name"];
                 client.Phone = (string)dr["Phone"];
                 client.DtRegistration = (DateTime)dr["DtRegsitration"];
-                client.Address = new Address() { Street = (string)dr["Street"],
-                                                 Number = (int)dr["Number"],
-                                                 Neighborhood= (string)dr["Neighborhood"],
-                                                 PostalCode = (string)dr["PostalCode"],
-                                                 Description = (string)dr["Description"] };
+                client.Address = new Address()
+                {
+                    Street = (string)dr["Street"],
+                    Number = (int)dr["Number"],
+                    Neighborhood = (string)dr["Neighborhood"],
+                    PostalCode = (string)dr["PostalCode"],
+                    Description = (string)dr["Description"]
+                };
                 clientList.Add(client);
             }
             return clientList;
