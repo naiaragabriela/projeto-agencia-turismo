@@ -51,7 +51,6 @@ namespace AgenciaTurismo.Services
             return status;
 
         }
-
         public List<Ticket> FindAll()
         {
             List<Ticket> ticketList = new List<Ticket>();
@@ -105,7 +104,33 @@ namespace AgenciaTurismo.Services
             return ticketList;
         }
 
-        // falta o update 
-        //e delete
+
+        public int Update(Ticket ticket)
+        {
+   
+            string _update = "update Ticket set " +
+                             "Source = @IdSource" +
+                             "Destination = @IdDestination" +
+                             "Client = @IdClient"+
+                             "CostTicket = @CostTicket" +
+                             " where Id = @id";
+            SqlCommand commandUpdate = new SqlCommand(_update, conn);
+            commandUpdate.Parameters.Add(new SqlParameter("@IdSource", ticket.Source));
+            commandUpdate.Parameters.Add(new SqlParameter("@IdDestination", ticket.Destination));
+            commandUpdate.Parameters.Add(new SqlParameter("@IdClient", ticket.Client));
+            commandUpdate.Parameters.Add(new SqlParameter("@CostTicket", ticket.CostTicket));
+
+            return commandUpdate.ExecuteNonQuery();
+
+        }
+
+        public int Delete(Ticket ticket)
+        {
+            string _delete = "delete from Client where id =@id";
+            SqlCommand commandDelete = new SqlCommand(_delete, conn);
+            commandDelete.Parameters.Add(new SqlParameter("@id", ticket.Id));
+
+            return (int)commandDelete.ExecuteNonQuery();
+        }
     }
 }

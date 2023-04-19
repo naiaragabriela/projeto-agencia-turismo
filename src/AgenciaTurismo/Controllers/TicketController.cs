@@ -20,14 +20,14 @@ namespace AgenciaTurismo.Controllers
             return new TicketService().FindAll();
         }
 
-        public int Update()
+        public int Update(Ticket ticket)
         {
-            return new TicketService().Update();
+            return new TicketService().Update(ticket);
         }
 
-        public int Delete(int id)
+        public int Delete(Ticket ticket)
         {
-            return new TicketService().DeleteId(id);
+            return new TicketService().Delete(ticket);
         }
     }
 }
