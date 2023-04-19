@@ -20,5 +20,16 @@ namespace AgenciaTurismo.Controllers
             return new PackageService().FindAll();
         }
 
+        public int Update(Package package)
+        {
+            return new PackageService().Update(package);
+        }
+
+        public int Delete(Package package)
+        {
+            return new PackageService().Delete(package);
+        }
+
+
     }
 }

@@ -74,6 +74,7 @@ namespace AgenciaTurismo.Services
                 Hotel hotel = new Hotel();
 
                 hotel.Id = (int)dr["Id"];
+                hotel.Name = (string)dr["Name"];
                 hotel.DtRegistration = (DateTime)dr["DtRegsitration"];
                 hotel.CostHotel = (decimal)dr["CostHotel"];
                 hotel.Address = new Address()
