@@ -54,7 +54,7 @@ namespace AgenciaTurismo.Services
 
             StringBuilder sb = new StringBuilder();
             sb.Append("select c.Id, ");
-            sb.Append("       c.Description ");
+            sb.Append("       c.NameCity ");
             sb.Append("  FROM City c");
 
 
@@ -66,7 +66,7 @@ namespace AgenciaTurismo.Services
                 City city = new City();
 
                 city.Id = (int)dr["Id"];
-                city.Description = (string)dr["Description"];
+                city.NameCity = (string)dr["NameCity"];
 
                 cityList.Add(city);
             }
@@ -75,9 +75,9 @@ namespace AgenciaTurismo.Services
 
         public int UpdateDescription(City city)
         {
-            string _update = "update City set Description = @Description where Id = @id";
+            string _update = "update City set NameCity = @NameCity where Id = @id";
             SqlCommand commandUpdate = new SqlCommand(_update, conn);
-            commandUpdate.Parameters.Add(new SqlParameter("@Description", city.Description));
+            commandUpdate.Parameters.Add(new SqlParameter("@NameCity", city.NameCity));
             commandUpdate.Parameters.Add(new SqlParameter("@Id", city.Id));
 
             return commandUpdate.ExecuteNonQuery();

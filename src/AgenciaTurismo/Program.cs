@@ -50,12 +50,12 @@ internal class Program
         */
         //SELECT CITY 
 
-        //new CityController().FindAll().ForEach(Console.WriteLine);
+        // new CityController().FindAll().ForEach(Console.WriteLine);
 
 
         // UPDATE City
 
-      
+
 
 
 
@@ -149,9 +149,20 @@ internal class Program
         else
             Console.WriteLine("Erro ao inserir registro");
         
+        */
+
+        //SELECT ADDRESS
+
+        //new AddressController().FindAll().ForEach(Console.WriteLine);
 
 
 
+
+
+
+
+
+        /*
 
         Client clientTicket = new Client()
         {
@@ -187,7 +198,17 @@ internal class Program
             Console.WriteLine("Erro ao inserir registro");
         
 
+        */
+        //SELECT CLIENT
 
+
+        new AddressController().FindAll().ForEach(Console.WriteLine);
+
+
+
+
+
+        /*
         Hotel hotel = new Hotel()
         {
             Name = "Hotel Felicidade",

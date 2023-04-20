@@ -15,14 +15,14 @@ namespace AgenciaTurismo.Models
         #region Properties
 
         public int Id { get; set; }
-        public string Description { get; set; }
+        public string NameCity { get; set; }
         public DateTime DtRegistration { get; set; }
         #endregion
 
 
         public override string ToString()
         {
-            return "Descrição: " + Description;
+            return "Nome da cidade: " + NameCity;
         }
 
     }

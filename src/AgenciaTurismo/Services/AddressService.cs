@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,8 +69,9 @@ namespace AgenciaTurismo.Services
             sb.Append("       a.Number, ");
             sb.Append("       a.Neighborhood, ");
             sb.Append("       a.PostalCode, ");
-            sb.Append("       a.Description, ");
-            sb.Append("       a.DtRegistration");
+            sb.Append("       a.Description,");
+            sb.Append("       c.Id, ");
+            sb.Append("       c.Description ");
             sb.Append("       from Address a,");
             sb.Append("       City c");
             sb.Append("       where a.IdCity = c.Id");
@@ -85,9 +87,13 @@ namespace AgenciaTurismo.Services
                 address.Id = (int)dr["Id"];
                 address.Number = (int)dr["Number"];
                 address.Neighborhood = (string)dr["Neighborhood"];
+                address.PostalCode = (string)dr["PostalCode"];
                 address.Description = (string)dr["Description"];
-                address.DtRegistration = (DateTime)dr["DtRegsitration"];
-                address.City = new City() { Description = (string)dr["City"] };
+                address.City = new City()
+                {
+                    Id = (int)dr["Id"],
+                    Description = (string)dr["Description"] 
+                };
 
                 addressList.Add(address);
             }

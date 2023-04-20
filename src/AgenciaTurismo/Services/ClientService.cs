@@ -55,12 +55,15 @@ namespace AgenciaTurismo.Services
             List<Client> clientList = new List<Client>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("select c.Id, ");
-            sb.Append("       c.Name, ");
-            sb.Append("       c.Phone, ");
-            sb.Append("       c.DtRegistration");
-            sb.Append("  from Client c,");
-            sb.Append("   where c.IdAddress = a.Id");
+            sb.Append("select cl.Id, ");
+            sb.Append("       cl.Name, ");
+            sb.Append("       cl.Phone, ");
+            sb.Append("       cl.DtRegistration");
+            sb.Append("  from Client cl,");
+            sb.Append("   Address a,");
+            sb.Append("   City c,");
+            sb.Append("   where cl.IdAddress = a.Id");
+            sb.Append("   where a.Id = a.Id");
 
 
             SqlCommand commandSelect = new SqlCommand(sb.ToString(), conn);
@@ -73,14 +76,17 @@ namespace AgenciaTurismo.Services
                 client.Id = (int)dr["Id"];
                 client.Name = (string)dr["Name"];
                 client.Phone = (string)dr["Phone"];
-                client.DtRegistration = (DateTime)dr["DtRegsitration"];
                 client.Address = new Address()
                 {
                     Street = (string)dr["Street"],
                     Number = (int)dr["Number"],
                     Neighborhood = (string)dr["Neighborhood"],
                     PostalCode = (string)dr["PostalCode"],
-                    Description = (string)dr["Description"]
+                    Description = (string)dr["Description"],
+                    City = new City()
+                    {
+                        NameCity = (string)dr["NameCity"]
+                    }
                 };
                 clientList.Add(client);
             }
