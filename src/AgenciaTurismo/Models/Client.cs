@@ -8,6 +8,9 @@ namespace AgenciaTurismo.Models
 {
     public class Client
     {
+        public static readonly string GETALL = "SELECT Id,Name, Phone, Address FROM Client";
+        public static readonly string INSERT = "INSERT into Client (Name, Phone, Address) VALUES (@Name, @Phone, @Address)";
+
         #region Properties
 
         public int Id { get; set; }
