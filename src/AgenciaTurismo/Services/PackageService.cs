@@ -36,7 +36,7 @@ namespace AgenciaTurismo.Services
                 commandInsert.Parameters.Add(new SqlParameter("@IdTicket", new TicketController().Insert(package.Ticket)));
                 commandInsert.Parameters.Add(new SqlParameter("@DtRegistration", package.DtRegistration));
                 commandInsert.Parameters.Add(new SqlParameter("@Cost", package.Cost));
-                commandInsert.Parameters.Add(new SqlParameter("@IdCliente", new ClientController().Insert(package.Client)));
+                commandInsert.Parameters.Add(new SqlParameter("@IdClient", new ClientController().Insert(package.Client)));
 
                 status = (int)commandInsert.ExecuteNonQuery();
 

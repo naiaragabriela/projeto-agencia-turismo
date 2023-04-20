@@ -8,6 +8,10 @@ namespace AgenciaTurismo.Models
 {
     public class City
     {
+
+        public static readonly string GETALL = "SELECT Id, Drescription FROM City";
+        public static readonly string INSERT = "INSERT into City (Description) VALUES (@Description)";
+
         #region Properties
 
         public int Id { get; set; }

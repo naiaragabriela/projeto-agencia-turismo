@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kCqrnWN79oL8hgGFIeeN8AmbjP2dbTFM6Fucp94SKn6wvu/i1Uzb4uvJKsCg83015kw6+ehrxSePxJd01LN+Vg==",
+  "dgSpecHash": "nQp/YVB9dTz68jaBJBraRvVBLukq7GkuFeeVbSenRGIf8MUx5zZWJ3zgmzf2Zj+1vXM4p2PUZxB+mBsaPRvefg==",
   "success": true,
   "projectFilePath": "C:\\Users\\adm\\source\\repos\\projeto-agencia-turismo\\src\\AgenciaTurismo\\AgenciaTurismo.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\adm\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\adm\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\adm\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\adm\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",

@@ -8,6 +8,7 @@ C:\Users\adm\source\repos\projeto-agencia-turismo\src\AgenciaTurismo\bin\Debug\n
 C:\Users\adm\source\repos\projeto-agencia-turismo\src\AgenciaTurismo\bin\Debug\net6.0\AgenciaTurismo.runtimeconfig.json
 C:\Users\adm\source\repos\projeto-agencia-turismo\src\AgenciaTurismo\bin\Debug\net6.0\AgenciaTurismo.dll
 C:\Users\adm\source\repos\projeto-agencia-turismo\src\AgenciaTurismo\bin\Debug\net6.0\AgenciaTurismo.pdb
+C:\Users\adm\source\repos\projeto-agencia-turismo\src\AgenciaTurismo\bin\Debug\net6.0\Dapper.dll
 C:\Users\adm\source\repos\projeto-agencia-turismo\src\AgenciaTurismo\bin\Debug\net6.0\System.Data.SqlClient.dll
 C:\Users\adm\source\repos\projeto-agencia-turismo\src\AgenciaTurismo\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
 C:\Users\adm\source\repos\projeto-agencia-turismo\src\AgenciaTurismo\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
